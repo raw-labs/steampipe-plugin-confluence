@@ -5,8 +5,8 @@ import (
 
 	model "github.com/ctreminiom/go-atlassian/pkg/infra/models"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
 )
 
 //// TABLE DEFINITION
@@ -66,7 +66,7 @@ func listSpace(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData) 
 	startAt := 0
 	pageSize := 25
 
-	quals := d.KeyColumnQuals
+	quals := d.EqualsQuals
 	options := &model.GetSpacesOptionScheme{
 		SpaceKeys: nil,
 		// Type:      quals["type"].GetStringValue(),
@@ -104,7 +104,7 @@ func getSpace(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData) (
 		return nil, err
 	}
 
-	quals := d.KeyColumnQuals
+	quals := d.EqualsQuals
 	logger.Warn("getSpace", "quals", quals)
 	id := quals["id"].GetStringValue()
 	logger.Warn("getSpace", "id", id)

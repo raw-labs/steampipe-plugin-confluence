@@ -5,9 +5,9 @@ import (
 
 	model "github.com/ctreminiom/go-atlassian/pkg/infra/models"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 //// TABLE DEFINITION
@@ -77,7 +77,8 @@ func listContent(ctx context.Context, d *plugin.QueryData, _ *plugin.HydrateData
 	} else {
 		limit = 1000
 	}
-	quals := d.KeyColumnQuals
+
+	quals := d.EqualsQuals
 	options := &model.GetContentOptionsScheme{
 		Expand:   []string{"childTypes.all", "body.storage", "body.view", "metadata.labels", "space", "version"},
 		SpaceKey: quals["space_key"].GetStringValue(),
@@ -119,7 +120,7 @@ func getContent(ctx context.Context, d *plugin.QueryData, h *plugin.HydrateData)
 		return nil, err
 	}
 
-	quals := d.KeyColumnQuals
+	quals := d.EqualsQuals
 	logger.Warn("getContent", "quals", quals)
 	id := quals["id"].GetStringValue()
 	logger.Warn("getContent", "id", id)

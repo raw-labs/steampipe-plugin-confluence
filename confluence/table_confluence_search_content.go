@@ -5,9 +5,9 @@ import (
 
 	model "github.com/ctreminiom/go-atlassian/pkg/infra/models"
 
-	"github.com/turbot/steampipe-plugin-sdk/v4/grpc/proto"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin"
-	"github.com/turbot/steampipe-plugin-sdk/v4/plugin/transform"
+	"github.com/turbot/steampipe-plugin-sdk/v5/grpc/proto"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin"
+	"github.com/turbot/steampipe-plugin-sdk/v5/plugin/transform"
 )
 
 //// TABLE DEFINITION
@@ -67,7 +67,7 @@ func listSearchContent(ctx context.Context, d *plugin.QueryData, _ *plugin.Hydra
 	logger := plugin.Logger(ctx)
 	logger.Trace("Search confluence content")
 
-	cql := d.KeyColumnQuals["cql"].GetStringValue()
+	cql := d.EqualsQuals["cql"].GetStringValue()
 	logger.Trace("listSearchContent", "cql", cql)
 
 	instance, err := connect(ctx, d)
