@@ -1,5 +1,5 @@
 connection "confluence" {
-    plugin    = "ellisvalentiner/confluence"
+    plugin    = "raw-labs/confluence"
 
     # Base URI of your Confluence Cloud instance
     base_url = "https://your-domain.atlassian.net/"

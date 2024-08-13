@@ -1,5 +1,5 @@
 ---
-organization: ellisvalentiner
+organization: raw-labs
 category: ["software development"]
 icon_url: "/images/plugins/ellisvalentiner/confluence.svg"
 brand_color: "#2684FF"
