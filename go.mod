@@ -1,4 +1,4 @@
-module github.com/ellisvalentiner/steampipe-plugin-confluence
+module github.com/raw-labs/steampipe-plugin-confluence
 
 go 1.21
 
